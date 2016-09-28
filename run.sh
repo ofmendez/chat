@@ -1,3 +1,3 @@
 #!/usr/bin/env bash
 
-java -jar target/chat-1.0-SNAPSHOT.jar
+java -jar target/chat.jar
