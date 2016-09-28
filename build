@@ -1,0 +1,1 @@
+java -jar payara-microprofile-1.0.jar --deploy test-app.war
