@@ -1,0 +1,7 @@
+com\smorales\chat\GameRoomHandler.class
+com\smorales\chat\LoggerExposer.class
+com\smorales\chat\RoomProvider.class
+com\smorales\chat\EchoWebSocketServer.class
+com\smorales\chat\GameContext.class
+com\smorales\chat\Player.class
+com\smorales\chat\GameCache.class

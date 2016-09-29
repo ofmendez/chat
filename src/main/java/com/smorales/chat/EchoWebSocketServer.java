@@ -32,7 +32,7 @@ public class EchoWebSocketServer {
     public void onMessage(String message, Session session) {
         try {
             logger.log(Level.INFO, "Received Message on Session {0}", session.getId());
-            session.getBasicRemote().sendText(message);
+            session.getBasicRemote().sendText(message+ session.getId());
         } catch (IOException ex) {
             logger.log(Level.SEVERE, null, ex);
         }
