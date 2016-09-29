@@ -76,10 +76,10 @@ public class GameRoomHandler {
             throw new IllegalStateException("Inexistent context for roomId: " + roomId);
         }
 
-        if (!context.isGameFull()) {
-            sendMessageToPlayers(context, session, "Waiting for other player to connect");
-            return;
-        }
+//        if (!context.isGameFull()) {
+//            sendMessageToPlayers(context, session, "Waiting for other player to connect");
+//            return;
+//        }
 
         if (context.isPlayerOnGame(session.getId())) {
             // context.playerMove(new PlayerMove(msg));
