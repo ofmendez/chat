@@ -15,7 +15,7 @@ import java.util.logging.Logger;
 public class GameContext {
 
     static final String CAN_NOT_ADD_MORE_PLAYERS = "Can not add more players";
-    static final int NUMBER_OF_PLAYERS = 2;
+    static final int NUMBER_OF_PLAYERS = 100;
 
     // private final State standbyState;
     // private final State playerTurn;
