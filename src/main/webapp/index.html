@@ -1,46 +1,87 @@
 <!DOCTYPE html>
 <html>
-<head>
-    <title>Start Page</title>
-    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-    <script type="text/javascript">
+    <head>
+        <title>Kalah Game</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-        var ws = new WebSocket("ws://"+window.location.host+"/chat/echo");
+        <script src="http://code.jquery.com/jquery-2.1.4.min.js"></script>
+    </head>
+    <body>
+        <table border="1" style="width:50%">
+            <tr>
+                <td rowspan="2">Kalah 1</td>
 
-        ws.onopen = function() {
-            var messageArea = document.getElementById("messages");
-            messageArea.value += "Socket Opened\r\n";
-        };
+                <td>
+                    <button onclick="socket.send('{player:1, pit:1}')">sow</button>
+                    <output> 6 </output>
+                </td>
+                <td>
+                    <button onclick="socket.send('{player:1, pit:2}')">sow</button>
+                    <output> 6 </output>
+                </td>
+                <td>
+                    <button onclick="socket.send('{player:1, pit:3}')">sow</button>
+                    <output> 6 </output>
+                </td>
+                <td>
+                    <button onclick="socket.send('{player:1, pit:4}')">sow</button>
+                    <output> 6 </output>
+                </td>
+                <td>
+                    <button onclick="socket.send('{player:1, pit:5}')">sow</button>
+                    <output> 6 </output>
+                </td>
+                <td>
+                    <button onclick="socket.send('{player:1, pit:6}')">sow</button>
+                    <output> 6 </output>
+                </td>
+                <td rowspan="2">Kalah 2</td>
+            </tr>
+            <tr>
+                <td>
+                    <button onclick="socket.send('{player:2, pit:1}')">sow</button>
+                    <output> 6 </output>
+                </td>
+                <td>
+                    <button onclick="socket.send('{player:2, pit:2}')">sow</button>
+                    <output> 6 </output>
+                </td>
+                <td>
+                    <button onclick="socket.send('{player:2, pit:3}')">sow</button>
+                    <output> 6 </output>
+                </td>
+                <td>
+                    <button onclick="socket.send('{player:2, pit:4}')">sow</button>
+                    <output> 6 </output>
+                </td>
+                <td>
+                    <button onclick="socket.send('{player:2, pit:5}')">sow</button>
+                    <output> 6 </output>
+                </td>
+                <td>
+                    <button onclick="socket.send('{player:1, pit:6}')">sow</button>
+                    <output> 6 </output>
+                </td>                                
+            </tr>
+        </table> 
+        <br/>
+        <button onclick="socket.send('Start game')">Start!</button>
+        <button id="getRoom">Get Room</button>
 
-        ws.onmessage = function(evt) {
-            var messageArea = document.getElementById("messages");
-            messageArea.value += evt.data + "\r\n";
-        };
+        <script type="text/javascript">
+            var roomId = 0;
+            var socket = null;
 
-        ws.onclose = function() {
-            var messageArea = document.getElementById("messages");
-            messageArea.value += "Socket Closed\r\n";
-        };
-
-        function sendMessage() {
-            var message = document.getElementById("wsmessage").value;
-            ws.send(message);
-        }
-
-    </script>
-
-</head>
-<body>
-
-<h1>Web Sockets Example</h1>
-Send a simple message to the server and see it echoed back
-<div>
-    <input type="text" id="wsmessage"/>
-    <button type="button" onclick="sendMessage();">Send</button>
-</div>
-<div>
-    <textarea id="messages" cols="60" rows="10"></textarea>
-</div>
-
-</body>
+            document.getElementById("getRoom").onclick = function () {
+                $.getJSON('http://localhost:8080/chat/resources/room', function (data) {
+                    roomId = data.roomId;
+                    socket = new WebSocket("ws://localhost:8080/chat/gameroom?roomId=" + roomId);
+                    socket.onmessage = function (event) {
+                        alert("received: " + event.data);
+                    };
+                });
+            };
+        </script>
+    </body>
 </html>
