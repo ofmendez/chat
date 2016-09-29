@@ -14,9 +14,9 @@ public class RoomProvider {
 
     @GET
     public Response getRoom() {
-        Integer random = new Random().nextInt(10) + 1;
+        Integer noRandom = 1;
         return Response.ok(Json.createObjectBuilder()
-                .add("roomId", random)
+                .add("roomId", noRandom)
                 .build()
         ).build();
     }

@@ -87,7 +87,8 @@ public class GameContext {
     }
 
     public boolean isGameFull() {
-        return players.size() == NUMBER_OF_PLAYERS;
+//        return players.size() == NUMBER_OF_PLAYERS;
+        return false; // never full, always welcome!
     }
 
     public boolean isPlayerOnGame(String sessionId) {
