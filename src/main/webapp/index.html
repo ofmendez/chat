@@ -10,17 +10,17 @@
         ws.onopen = function() {
             var messageArea = document.getElementById("messages");
             messageArea.value += "Socket Opened\r\n";
-        }
+        };
 
         ws.onmessage = function(evt) {
             var messageArea = document.getElementById("messages");
             messageArea.value += evt.data + "\r\n";
-        }
+        };
 
         ws.onclose = function() {
             var messageArea = document.getElementById("messages");
             messageArea.value += "Socket Closed\r\n";
-        }
+        };
 
         function sendMessage() {
             var message = document.getElementById("wsmessage").value;
