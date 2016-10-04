@@ -62,7 +62,7 @@ public class GameRoomHandler {
     public void close(Session session) {
         String roomId = session.getQueryString();
         logger.info("Websocket was closed, closing room: " + roomId);
-        gameCache.remove(roomId);
+        // gameCache.remove(roomId);
     }
 
     @OnMessage
