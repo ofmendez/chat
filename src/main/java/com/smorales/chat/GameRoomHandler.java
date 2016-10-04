@@ -103,7 +103,7 @@ public class GameRoomHandler {
         try {
             for (Session playerSession : players) {
                 if(playerSession.getId() != session.getId() )
-                    playerSession.getBasicRemote().sendText("  - "+msg);
+                    playerSession.getBasicRemote().sendText("<- : "+msg);
             }
         } catch (IOException ioe) {
             logger.severe("IOException sending msg to players");
