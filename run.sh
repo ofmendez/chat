@@ -1,3 +1,3 @@
 #!/usr/bin/env bash
 
-nohup java -jar chat.jar --port 80 &
+nohup java -jar target/chat.jar --port 80 &
